@@ -1,10 +1,19 @@
-const hre = require("hardhat");
+const { ethers } = require("hardhat");
 
-async function main() {}
+async function main() {
+    const simpleStorageFactory = await ethers.getContractFactory(
+        "SimpleStorage"
+    );
+    console.log("deploying contract ...");
+    const simpleStorage = await simpleStorageFactory.deploy();
+    await simpleStorage.deployed();
+
+    console.log(`deployed contract to :${simpleStorage.address}`);
+}
 
 main()
-    .then(() => process.exit(1))
+    .then(() => process.exit(0))
     .catch((error) => {
         console.log(error);
-        process.exit(0);
+        process.exit(1);
     });
