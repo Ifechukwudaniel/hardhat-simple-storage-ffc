@@ -1,9 +1,11 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
-require("@nomiclabs/hardhat-etherscan");
-require("./task/block-number");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
+import "@nomicfoundation/hardhat-toolbox";
+import "dotenv/config";
+import "@nomiclabs/hardhat-etherscan";
+import "./task/block-number";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
+import "@nomiclabs/hardhat-ethers";
+import "@typechain/hardhat"
 
 /** @type import('hardhat/config').HardhatUserConfig */
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "key";
@@ -31,7 +33,7 @@ module.exports = {
         },
     },
     gasReporter: {
-        enabled: false,
+        enabled: true,
         outputFile: "gas-report.txt",
         noColors: true,
         currency: "USD",

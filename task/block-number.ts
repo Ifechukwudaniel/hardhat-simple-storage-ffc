@@ -1,11 +1,9 @@
-const { task } = require("hardhat/config");
+import { task }  from "hardhat/config";
 
-task("block-number", "Print the current Block Number").setAction(
+export default task("block-number", "Print the current Block Number").setAction(
     ///
     async (taskArgs, hre) => {
         let blockNumber = await hre.ethers.provider.getBlockNumber();
         console.log(`Block number ${blockNumber}`);
     }
 );
-
-module.exports = {};
